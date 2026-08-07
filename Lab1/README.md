@@ -2,28 +2,18 @@
 Task 1 — Map the Cloud Identity Landscape
 Before creating anything, understand the building blocks of cloud identity. Complete the table in your report by filling the ‘Purpose’ column in your own words.
 
-Concept	AWS term	Purpose (complete this)
 
-All-powerful owner	
-Root user	The main account with full control over all AWS resources. It should only be used for initial setup and emergency tasks because it has unrestricted permission
-
-Human/app identity	
-IAM User	A permanent identity created for a person or application to securely access AWS services using its own credentials
-
-Permission bundle	
-IAM Policy	A set of rules that defines which actions are allowed or denied on AWS resources. Policies are attached to users, groups, or roles
-
-Collection of users	
-IAM Group	A collection of IAM users that share the same permissions, making it easier to manage access for multiple users
-
-
-Temporary identity	
-
-IAM Role	A temporary identity that provides permissions without long-term credentials. It can be assumed by users, applications, or AWS services when needed
 Task 2 — Create a Least-Privilege Admin (Stop Using Root)
 The root user is a liability. Create a dedicated admin identity and grant permissions through a group, never directly to the user.
 
- 
+EP='--endpoint-url=http://localhost:4566'
+
+# 2.1 Create a group and attach an admin policy to the GROUP aws $EP iam create-group --group-name Admins
+aws $EP iam attach-group-policy --group-name Admins \
+--policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+
+# 2.2 Create your personal admin user (replace YOURNAME) 
+aws $EP iam create-user --user-name CloudAdmin_YOURNAME
 
 # 2.3 Put the user in the group (permissions flow from the group) aws $EP iam add-user-to-group --group-name Admins \
 --user-name CloudAdmin_YOURNAME
@@ -145,7 +135,6 @@ Cleanup & Teardown
 
 
 Expansion Ideas (Advanced Students)
-
 •	Infrastructure as Code: recreate the IAM group, user and policy attachment using a Terraform script pointed at LocalStack.
 •	Policy conditions: write a custom IAM policy JSON that denies all actions unless a condition (e.g. aws:MultiFactorAuthPresent) is met, and attach it.
 •	RBAC depth: create a ClusterRole + ClusterRoleBinding and compare its scope to a namespaced Role.
