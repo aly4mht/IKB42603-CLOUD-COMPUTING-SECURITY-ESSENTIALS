@@ -1,38 +1,3 @@
-+-----------------------------------------------------------------------+
-| **LAB 0 · SETUP CHEATSHEET**                                          |
-|                                                                       |
-| **Lab Environment Setup**                                             |
-|                                                                       |
-| *Install & verify everything ONCE before Lab 1 --- Docker · AWS CLI · |
-| Kubernetes (kind) · helper tools*                                     |
-+=======================================================================+
-
-# What You Install (once)
-
-+------------------------------------+----------------------------------------+--------------------------+
-| **Tool**                           | **What it is for**                     | **Used in**              |
-+=========+==========================+========================================+==========================+
-| Docker                             | Runs containers and the LocalStack     | All labs                 |
-|                                    | cloud simulator                        |                          |
-+------------------------------------+----------------------------------------+--------------------------+
-| AWS CLI v2                         | Sends AWS commands to LocalStack       | Labs 1, 3, 5             |
-+------------------------------------+----------------------------------------+--------------------------+
-| kind                               | Runs a local Kubernetes cluster inside | Labs 1, 2, 4             |
-|                                    | Docker                                 |                          |
-+------------------------------------+----------------------------------------+--------------------------+
-| kubectl                            | Controls the Kubernetes cluster        | Labs 1, 2, 4             |
-+------------------------------------+----------------------------------------+--------------------------+
-| OpenSSL                            | Encryption, keys, certificates         | Lab 3                    |
-+------------------------------------+----------------------------------------+--------------------------+
-| oathtool                           | Generates MFA / TOTP codes             | Lab 4                    |
-+------------------------------------+----------------------------------------+--------------------------+
-| Trivy                              | Scans containers for vulnerabilities   | Lab 4                    |
-|                                    | (run via Docker --- no install)        |                          |
-+---------+--------------------------+----------------------------------------+--------------------------+
-|         | **Security tip:** Windows users: after installing Docker, do ALL lab commands inside Git     |
-|         | Bash or WSL (Ubuntu). The labs use bash features (heredocs, sha256sum, single-quoting) that  |
-|         | do not work in Command Prompt or PowerShell.                                                 |
-+---------+----------------------------------------------------------------------------------------------+
 
 # 1. Install Docker
 
@@ -257,12 +222,4 @@ Tick each before Lab 1. If any fails, see Troubleshooting below.
   the lab                   the docker run/pull commands before class on
                             Wi-Fi.
 
-  MFA/TOTP code always      Your system clock is out of sync --- enable
-  fails (Lab 4)             automatic time, then retry.
-
-  NetworkPolicy not         The cluster needs Calico (the Lab 2 setup
-  blocking (Lab 2)          installs it). Wait until calico-node is
-                            Ready.
   -----------------------------------------------------------------------
-
-# 
