@@ -2,16 +2,16 @@
 # 1. Install Docker
 
 | **OS**                             | **How**                                                 |
-| --- | --- |
+|  |  |
 | Windows 10/11                      | Install Docker Desktop from docker.com. Choose the WSL  |
 |                                    | 2 backend when prompted. Reboot.                        |
-| --- | --- |
+|  |  |
 | macOS                              | Install Docker Desktop from docker.com (pick Apple      |
 |                                    | Silicon or Intel to match your Mac).                    |
-| --- | --- |
+|  |  |
 | Linux (Ubuntu)                     | Run: curl -fsSL https://get.docker.com \| sh then add   |
 |                                    | yourself to the docker group (below).                   |
-| --- |
+|  |
 | \# Linux only: run docker without sudo (log out & back in after)                             |
 |                                                                                              |
 | sudo usermod -aG docker \$USER                                                               |
@@ -21,7 +21,7 @@
 | docker \--version                                                                            |
 |                                                                                              |
 | docker run \--rm hello-world                                                                 |
-| --- |
+|  |
 
 ![alt text](<0.1-Docker Install.jpeg>)
 
