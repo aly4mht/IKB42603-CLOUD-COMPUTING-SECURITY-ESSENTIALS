@@ -9,10 +9,6 @@
 
 # What You Install (once)
 
-Do this on your own laptop before the first lab. Everything runs locally
---- no cloud account, no credit card, no internet after the first
-downloads.
-
 +------------------------------------+----------------------------------------+--------------------------+
 | **Tool**                           | **What it is for**                     | **Used in**              |
 +=========+==========================+========================================+==========================+
@@ -63,7 +59,7 @@ downloads.
 | docker run \--rm hello-world                                                                 |
 +----------------------------------------------------------------------------------------------+
 
-# ![](media/image1.png){width="4.122700131233596in" height="2.564061679790026in"}
+![alt text](<0.1-Docker Install.jpeg>)
 
 # 2. Install AWS CLI v2
 
@@ -89,9 +85,7 @@ downloads.
 | aws --version \# expect: aws-cli/2.x ...                                                     |
 +----------------------------------------------------------------------------------------------+
 
-# ![](media/image2.png){width="4.1875in" height="0.7083333333333334in"}
-
-# 
+![alt text](<0.2-AWS Install.jpeg>)
 
 # 3. Install kind & kubectl
 
@@ -119,13 +113,9 @@ downloads.
 | kubectl version \--client                                                           |
 +-------------------------------------------------------------------------------------+
 
-# ![](media/image3.png){width="4.354166666666667in" height="1.1736111111111112in"}
+![alt text](<0.3-Kind and Kubectl Install.jpeg>)
 
-# 
-
-# 
-
-# ![](media/image4.png){width="5.091666666666667in" height="0.6527777777777778in"}4. Helper Tools (OpenSSL, oathtool, Trivy)
+# 4. Helper Tools (OpenSSL, oathtool, Trivy)
 
 +-------------------------------------+---------------------------------------------------------+
 | **Tool**                            | **How to install**                                      |
@@ -146,6 +136,9 @@ downloads.
 |                                                                                               |
 | oathtool \--version \# Lab 4 only                                                             |
 +-----------------------------------------------------------------------------------------------+
+
+
+![alt text](<0.4-Helper Tools.jpeg>)
 
 # 5. Start & Stop the Lab Environment
 
@@ -169,7 +162,7 @@ downloads.
 | docker rm -f localstack \# remove completely                          |
 +=======================================================================+
 
-![](media/image5.jpeg){width="4.868055555555555in" height="2.5625in"}
+![alt text](0.5-Localstack.jpeg)
 
 **Kubernetes cluster (kind)**
 
@@ -189,9 +182,7 @@ downloads.
 | kind delete cluster \--name ccse                                      |
 +=======================================================================+
 
-# ![](media/image6.png){width="4.805555555555555in" height="0.9236111111111112in"}
-
-# 
+![alt text](<0.6-Kubernetes cluster.jpeg>)
 
 # 6. One-Time AWS CLI Configuration
 
@@ -213,13 +204,7 @@ stops asking:
 | LocalStack                                                           |
 +======================================================================+
 
-# ![](media/image7.png){width="4.434722222222222in" height="1.301388888888889in"}
-
-# 
-
-# 
-
-# 
+![alt text](<0.7-AWS Configuration.jpeg>)
 
 # 7. Pre-Lab Verification Checklist
 
