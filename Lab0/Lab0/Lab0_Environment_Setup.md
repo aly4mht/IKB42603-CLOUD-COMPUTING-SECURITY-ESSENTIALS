@@ -3,8 +3,7 @@
 ------------------------------------------------------------------------------------------------
 | **OS**                             | **How**                                                 |
 |------------------------------------|---------------------------------------------------------|
-| Windows 10/11                        Install Docker Desktop from docker.com. Choose the WSL  
-                                       2 backend when prompted. Reboot.                        |
+| Windows 10/11                      | Install Docker Desktop from docker.com. Choose the WSL  |                             |                                    | 2 backend when prompted. Reboot.                        |
 |------------------------------------|---------------------------------------------------------|
 | macOS                              | Install Docker Desktop from docker.com (pick Apple      |
 |                                    | Silicon or Intel to match your Mac).                    |
