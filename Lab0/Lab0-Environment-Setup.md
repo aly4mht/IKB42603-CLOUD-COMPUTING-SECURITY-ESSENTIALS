@@ -325,17 +325,17 @@ The command should return an identity from LocalStack.
 
 Complete each check before starting Lab 1. If any check fails, refer to the troubleshooting section below.
 
-* [ ] `docker --version` prints a version.
-* [ ] `docker run --rm hello-world` works successfully.
-* [ ] `aws --version` prints an `aws-cli/2.x` version.
-* [ ] `kind --version` works.
-* [ ] `kubectl version --client` works.
-* [ ] LocalStack starts successfully.
-* [ ] `curl http://localhost:4566/_localstack/health` responds.
-* [ ] `aws $EP sts get-caller-identity` returns an identity.
-* [ ] `kind create cluster --name ccse` works.
-* [ ] `kubectl get nodes` shows a node.
-* [ ] Windows users are working inside Git Bash or WSL.
+* [✓] `docker --version` prints a version.
+* [✓] `docker run --rm hello-world` works successfully.
+* [✓] `aws --version` prints an `aws-cli/2.x` version.
+* [✓] `kind --version` works.
+* [✓] `kubectl version --client` works.
+* [✓] LocalStack starts successfully.
+* [✓] `curl http://localhost:4566/_localstack/health` responds.
+* [✓] `aws $EP sts get-caller-identity` returns an identity.
+* [✓] `kind create cluster --name ccse` works.
+* [✓] `kubectl get nodes` shows a node.
+* [✓] Windows users are working inside Git Bash or WSL.
 
 ---
 
