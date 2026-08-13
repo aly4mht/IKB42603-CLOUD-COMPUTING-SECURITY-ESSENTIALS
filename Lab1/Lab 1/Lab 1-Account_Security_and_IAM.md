@@ -1,5 +1,6 @@
 **Name:** ALYA LIYANA BINTI MAHAT (B01)  
 **Student ID:** 52215124600
+
 **IKB42603 Cloud Computing Security Essentials**
 
 ## Lab Exercise — Identity and Access Control
@@ -67,11 +68,12 @@ aws $EP iam get-group \
 
 The `CloudAdmin_YOURNAME` user is added to the `Admins` group. The administrator permissions are inherited through the group rather than being attached directly to the user.
 
+<img width="973" height="715" alt="image" src="https://github.com/user-attachments/assets/6a0a6620-7841-4643-b83b-837a0339033c" />
+
 ### Security Tip
 
 Attaching policies to groups rather than users keeps permissions manageable and auditable at scale. Changes can be made once at the group level, and every member of the group receives the updated permissions.
 
-![](image.png)
 ---
 
 ## Task 3 — Enforce Least Privilege with a Scoped Policy
@@ -104,6 +106,8 @@ aws $EP iam list-attached-user-policies \
 
 The `Analyst_YOURNAME` account was granted only the `AmazonS3ReadOnlyAccess` policy. This allows the account to view S3 resources without granting permissions to modify or delete data.
 
+<img width="975" height="378" alt="image" src="https://github.com/user-attachments/assets/89f11cfe-0d5f-47c5-8ffe-862bb8925c48" />
+
 ### Least-Privilege and Blast-Radius Explanation
 
 If the Analyst account was stolen, the damage would be limited because it only has the `AmazonS3ReadOnlyAccess` policy. The attacker could only view S3 resources and would not be able to create, modify or delete data or manage other AWS resources.
@@ -111,8 +115,6 @@ If the Analyst account was stolen, the damage would be limited because it only h
 In contrast, a stolen administrator account has full permission and could make significant changes or delete critical resources.
 
 This demonstrates blast-radius reduction, where limiting permissions ensures that the impact of a compromised account is contained and potential damage is minimized.
-
-![](image-1.png)
 
 ---
 
@@ -146,7 +148,8 @@ aws $EP iam update-access-key \
   --access-key-id <PASTE_KEY_ID> \
   --status Inactive
 ```
-![](image-2.png)
+<img width="974" height="369" alt="image" src="https://github.com/user-attachments/assets/2d60abb7-ee76-4a55-9981-4599ae4d15e6" />
+
 
 ### Security Notes
 
@@ -198,7 +201,8 @@ kubectl get nodes
 
 The local kind cluster `ccse-lab1` was created and kubectl was configured to use the `kind-ccse-lab1` context.
 
-![](image-3.png)
+<img width="971" height="119" alt="image" src="https://github.com/user-attachments/assets/d7ff3f26-096a-4bf5-8492-fdcfff1851ce" />
+
 ---
 
 # Task 5 — Separate Environments with Namespaces
@@ -217,7 +221,8 @@ kubectl get namespaces
 
 The namespaces `dev` and `prod` were created and listed as `Active`.
 
-![](image-5.png)
+<img width="953" height="187" alt="image" src="https://github.com/user-attachments/assets/597e3bf7-da2a-4fe6-9d59-59585ecf1933" />
+
 ---
 
 # Task 6 — Define a Role and Bind It
@@ -271,7 +276,8 @@ kubectl create rolebinding dev-user-binding -n dev \
 
 The `dev-user-binding` RoleBinding binds the `pod-reader` Role to the `dev-user` service account.
 
-![alt text](image-6.png)
+<img width="972" height="235" alt="image" src="https://github.com/user-attachments/assets/438dc726-843c-4e50-815f-4ec07304d0c4" />
+
 ---
 
 # Task 7 — Test That Access Control Works
@@ -347,7 +353,8 @@ kubectl auth can-i list pods -n prod --as=$SA
 ```text
 no
 ```
-![](image-7.png)
+
+<img width="942" height="147" alt="image" src="https://github.com/user-attachments/assets/445580ac-c34c-4e77-bcca-89a608181312" />
 
 ### Explanation
 
@@ -429,11 +436,12 @@ subjects:
   name: dev-user
   namespace: dev
 ```
-![alt text](image-8.png)
 
 ### Explanation
 
 This confirms that the `dev-user-binding` RoleBinding connects the `dev-user` service account to the `pod-reader` Role in the `dev` namespace.
+
+<img width="980" height="394" alt="image" src="https://github.com/user-attachments/assets/9902f6a5-b8bc-42d3-a42d-d91251b6c764" />
 
 ---
 
@@ -539,6 +547,3 @@ Install OPA Gatekeeper and write a policy that blocks any pod running as root.
 * LocalStack documentation — `docs.localstack.cloud`
 * Kubernetes RBAC — `kubernetes.io/docs/reference/access-authn-authz/rbac`
 * CSA Security Guidance v5 — Domain on Identity & Access Management.
-
-```
-```
