@@ -58,6 +58,8 @@ docker run --rm hello-world
 * `docker --version` prints the installed Docker version.
 * `docker run --rm hello-world` successfully runs the test container.
 
+<img width="618" height="385" alt="image" src="https://github.com/user-attachments/assets/df8cc0e8-b88b-4cb3-b388-b546a0d20263" />
+
 ---
 
 # 2. Install AWS CLI v2
@@ -101,6 +103,7 @@ The command should display an AWS CLI v2 version similar to:
 ```text
 aws-cli/2.x ...
 ```
+<img width="628" height="106" alt="image" src="https://github.com/user-attachments/assets/e551e0e6-3215-4887-b98c-0fd6d1c64105" />
 
 ---
 
@@ -144,6 +147,8 @@ kubectl version --client
 * `kind --version` should display the installed kind version.
 * `kubectl version --client` should display the installed kubectl client version.
 
+<img width="653" height="176" alt="image" src="https://github.com/user-attachments/assets/05b73755-4d85-4a17-9c95-8d31b451b35e" />
+
 ---
 
 # 4. Helper Tools
@@ -185,6 +190,7 @@ Trivy does not need to be installed separately because it is run through Docker:
 ```bash
 docker run --rm aquasec/trivy image <name>
 ```
+<img width="764" height="98" alt="image" src="https://github.com/user-attachments/assets/5d3a9bf8-c3ff-44ea-abd6-a1877778ace2" />
 
 ---
 
@@ -229,6 +235,7 @@ docker start localstack
 ```bash
 docker rm -f localstack
 ```
+<img width="730" height="384" alt="image" src="https://github.com/user-attachments/assets/bb4a152e-e4f4-4127-bfb6-15ce9e7cc645" />
 
 ---
 
@@ -269,6 +276,7 @@ When finished with the lab:
 ```bash
 kind delete cluster --name ccse
 ```
+<img width="721" height="138" alt="image" src="https://github.com/user-attachments/assets/3ddabcf5-9a75-4eec-8c4b-fb3ff1aff70c" />
 
 ---
 
@@ -309,6 +317,7 @@ This proves that the AWS CLI is communicating with LocalStack instead of a real 
 ### Expected Result
 
 The command should return an identity from LocalStack.
+<img width="665" height="195" alt="image" src="https://github.com/user-attachments/assets/be4ee694-03c1-4580-a411-dba224704309" />
 
 ---
 
