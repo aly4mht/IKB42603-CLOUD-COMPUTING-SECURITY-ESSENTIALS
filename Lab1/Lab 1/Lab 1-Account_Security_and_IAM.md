@@ -445,7 +445,7 @@ This confirms that the `dev-user-binding` RoleBinding connects the `dev-user` se
 
 ---
 
-# 2. Short-Answer Questions
+# Short-Answer Questions
 
 ## Q1. Why is attaching policies to groups better than attaching them directly to users?
 
