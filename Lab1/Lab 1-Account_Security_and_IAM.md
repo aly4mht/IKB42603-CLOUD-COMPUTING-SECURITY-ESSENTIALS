@@ -2,9 +2,9 @@
 **Student ID:** 52215124600
 **IKB42603 Cloud Computing Security Essentials**
 
-## Lab Exercise — Identity and Access Control
+# Identity and Access Control
 
-# Session A — Cloud Identity and IAM
+## Session A — Cloud Identity and IAM
 
 ## Task 1 — Map the Cloud Identity Landscape
 
