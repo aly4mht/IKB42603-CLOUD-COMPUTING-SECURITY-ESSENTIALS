@@ -10,7 +10,7 @@
 
 ---
 
-# Lab Summary // Objective
+# Lab Summary
 
 The objective of this lab is to prepare and activate a LocalStack environment using an authentication token and verify that AWS CLI commands can communicate with the local AWS-compatible services.
 
@@ -51,18 +51,21 @@ docker run --rm hello-world
 ```
 
 should successfully run the Docker test container.
+<img width="904" height="492" alt="image" src="https://github.com/user-attachments/assets/f727e54a-3562-45a2-b52b-87773b994b96" />
 
 ```bash
 aws --version
 ```
 
 should return an AWS CLI v2 version.
+<img width="628" height="106" alt="image" src="https://github.com/user-attachments/assets/4f8def62-eab7-4302-b55a-7b64fd744ea1" />
 
 ```bash
 docker --version
 ```
 
 should return the installed Docker version. 
+<img width="529" height="82" alt="image" src="https://github.com/user-attachments/assets/5c07c37a-e60d-46c9-a578-290c924cb74a" />
 
 ---
 
@@ -131,6 +134,7 @@ echo $LOCALSTACK_AUTH_TOKEN
 The command should print the configured token.
 
 The token should only be stored locally and should not be included in screenshots or submitted publicly.
+<img width="930" height="692" alt="image" src="https://github.com/user-attachments/assets/47903392-79ad-4aa7-9c64-5a3d1a774f73" />
 
 ---
 
@@ -187,15 +191,10 @@ docker logs -f localstack
 
 Wait until the logs indicate that LocalStack is ready.
 
-Press:
-
-```text
-Ctrl-C
-```
-
-to stop following the logs without stopping the LocalStack container.
+Press Ctrl-C to stop following the logs without stopping the LocalStack container.
 
 The LocalStack startup procedure and required Docker options are specified in the lab document.  
+<img width="1014" height="362" alt="image" src="https://github.com/user-attachments/assets/141d085f-0119-4886-a9a7-93513a47d469" />
 
 ---
 
@@ -241,6 +240,7 @@ The health endpoint should return the available LocalStack services.
 ### Result
 
 The `/ _localstack/info` endpoint confirms licence activation, while the `/ _localstack/health` endpoint confirms that LocalStack services are available. 
+<img width="1012" height="259" alt="image" src="https://github.com/user-attachments/assets/c891fc38-f23c-4c79-9ce5-c9f8fccdf90f" />
 
 ---
 
@@ -292,6 +292,7 @@ The expected LocalStack result includes:
 * An ARN ending in `:root`
 
 This confirms that the AWS CLI is communicating with LocalStack instead of the real AWS cloud.  
+<img width="536" height="404" alt="image" src="https://github.com/user-attachments/assets/a11a8a3a-ecb9-42aa-971c-7eb7f8cbfbca" />
 
 ---
 
@@ -344,6 +345,7 @@ us-east-1
 ```
 
 This ensures that the resources created during the lab appear in the Resource Browser. 
+<img width="1015" height="493" alt="image" src="https://github.com/user-attachments/assets/c0762982-9224-495d-8b03-fe64e9f16f2c" />
 
 ---
 
@@ -440,6 +442,7 @@ The billing mode is:
 ```text
 PAY_PER_REQUEST
 ```
+<img width="697" height="786" alt="image" src="https://github.com/user-attachments/assets/05d13cca-2a52-402b-af6b-e17b371db797" />
 
 ---
 
@@ -456,6 +459,7 @@ aws $EP iam create-user --user-name LabUser
 ### Result
 
 The IAM user `LabUser` is created in the LocalStack IAM service.
+<img width="704" height="242" alt="image" src="https://github.com/user-attachments/assets/64e99909-fea5-4c1c-b8cb-3bad516aa209" />
 
 ---
 
@@ -487,209 +491,6 @@ The following resources should be visible:
 | IAM         | `LabUser`          |
 
 This demonstrates the create-then-view workflow using the AWS CLI and LocalStack Web Console. 
-
----
-
-# Evidence
-
-The following screenshots should be captured and clearly labelled in the report.
-
-## Evidence 1 — Docker Verification
-
-Show:
-
-```bash
-docker --version
-docker run --rm hello-world
-```
-
-### Expected Evidence
-
-The screenshot should demonstrate that Docker is installed and that the `hello-world` container runs successfully.
-
----
-
-## Evidence 2 — AWS CLI Verification
-
-Show:
-
-```bash
-aws --version
-```
-
-### Expected Evidence
-
-The screenshot should show AWS CLI v2 installed successfully.
-
----
-
-## Evidence 3 — LocalStack Auth Token
-
-Show the token configuration command or verification.
-
-> **Important:** Do not include the real authentication token in the submitted screenshot.
-
-Use a redacted value if necessary:
-
-```text
-ls-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-```
-
----
-
-## Evidence 4 — LocalStack Container
-
-Show:
-
-```bash
-docker ps
-```
-
-### Expected Evidence
-
-The screenshot should show the `localstack` container running and port `4566` exposed.
-
----
-
-## Evidence 5 — Licence Activation
-
-Show:
-
-```bash
-curl http://localhost:4566/_localstack/info
-```
-
-### Expected Evidence
-
-The response should show:
-
-```text
-"edition": "pro"
-"is_license_activated": true
-```
-
----
-
-## Evidence 6 — LocalStack Health
-
-Show:
-
-```bash
-curl http://localhost:4566/_localstack/health
-```
-
-### Expected Evidence
-
-The response should show available LocalStack services.
-
----
-
-## Evidence 7 — AWS CLI LocalStack Identity
-
-Show:
-
-```bash
-aws $EP sts get-caller-identity
-```
-
-### Expected Evidence
-
-The result should show the LocalStack dummy account:
-
-```text
-000000000000
-```
-
-and an ARN ending in:
-
-```text
-:root
-```
-
----
-
-## Evidence 8 — S3 Bucket
-
-Show:
-
-```bash
-aws $EP s3 mb s3://ccse-demo-bucket
-```
-
-and:
-
-```bash
-aws $EP s3 ls
-```
-
-### Expected Evidence
-
-The bucket `ccse-demo-bucket` should appear in the output.
-
----
-
-## Evidence 9 — S3 File Upload
-
-Show:
-
-```bash
-echo "hello cloud" > hello.txt
-aws $EP s3 cp hello.txt s3://ccse-demo-bucket/
-```
-
-### Expected Evidence
-
-The file `hello.txt` should be successfully uploaded to the S3 bucket.
-
----
-
-## Evidence 10 — DynamoDB Table
-
-Show:
-
-```bash
-aws $EP dynamodb create-table \
-  --table-name Students \
-  --attribute-definitions AttributeName=id,AttributeType=S \
-  --key-schema AttributeName=id,KeyType=HASH \
-  --billing-mode PAY_PER_REQUEST
-```
-
-### Expected Evidence
-
-The command should return information confirming that the `Students` table was created.
-
----
-
-## Evidence 11 — IAM User
-
-Show:
-
-```bash
-aws $EP iam create-user --user-name LabUser
-```
-
-### Expected Evidence
-
-The response should confirm that the IAM user `LabUser` was created.
-
----
-
-## Evidence 12 — Resource Browser
-
-Open the LocalStack Web Console and navigate to:
-
-```text
-Resource Browser
-```
-
-Set the region to:
-
-```text
-us-east-1
-```
-
-The screenshot should show the resources created during the lab.
 
 ---
 
