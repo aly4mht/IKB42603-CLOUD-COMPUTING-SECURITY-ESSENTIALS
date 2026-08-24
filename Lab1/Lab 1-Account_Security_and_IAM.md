@@ -71,7 +71,8 @@ The `CloudAdmin_YOURNAME` user is added to the `Admins` group. The administrator
 
 Attaching policies to groups rather than users keeps permissions manageable and auditable at scale. Changes can be made once at the group level, and every member of the group receives the updated permissions.
 
-![](image.png)
+<img width="973" height="715" alt="image" src="https://github.com/user-attachments/assets/cd7c30db-f5a6-4293-8e74-58c452822e37" />
+
 ---
 
 ## Task 3 — Enforce Least Privilege with a Scoped Policy
@@ -112,7 +113,8 @@ In contrast, a stolen administrator account has full permission and could make s
 
 This demonstrates blast-radius reduction, where limiting permissions ensures that the impact of a compromised account is contained and potential damage is minimized.
 
-![](image-1.png)
+<img width="975" height="378" alt="image" src="https://github.com/user-attachments/assets/ecc5bdaa-e2fd-4e9c-a06b-1cf04b605efa" />
+
 
 ---
 
@@ -146,7 +148,8 @@ aws $EP iam update-access-key \
   --access-key-id <PASTE_KEY_ID> \
   --status Inactive
 ```
-![](image-2.png)
+<img width="974" height="369" alt="image" src="https://github.com/user-attachments/assets/f57d9068-2714-4c48-87c1-165e81a67fda" />
+
 
 ### Security Notes
 
@@ -198,7 +201,8 @@ kubectl get nodes
 
 The local kind cluster `ccse-lab1` was created and kubectl was configured to use the `kind-ccse-lab1` context.
 
-![](image-3.png)
+<img width="971" height="119" alt="image" src="https://github.com/user-attachments/assets/b5aefaea-8955-4368-98e7-5ab183c7608c" />
+
 ---
 
 # Task 5 — Separate Environments with Namespaces
@@ -217,7 +221,8 @@ kubectl get namespaces
 
 The namespaces `dev` and `prod` were created and listed as `Active`.
 
-![](image-5.png)
+<img width="953" height="187" alt="image" src="https://github.com/user-attachments/assets/ff1d9a36-6b7d-43ed-98dd-91f44104b0d8" />
+
 ---
 
 # Task 6 — Define a Role and Bind It
@@ -271,7 +276,8 @@ kubectl create rolebinding dev-user-binding -n dev \
 
 The `dev-user-binding` RoleBinding binds the `pod-reader` Role to the `dev-user` service account.
 
-![alt text](image-6.png)
+<img width="972" height="235" alt="image" src="https://github.com/user-attachments/assets/5c6ac384-c8c7-4aec-8439-dfa0afc7942d" />
+
 ---
 
 # Task 7 — Test That Access Control Works
@@ -347,7 +353,8 @@ kubectl auth can-i list pods -n prod --as=$SA
 ```text
 no
 ```
-![](image-7.png)
+<img width="942" height="147" alt="image" src="https://github.com/user-attachments/assets/057fd1d5-9709-43dd-8add-e52cccdea24e" />
+
 
 ### Explanation
 
@@ -429,7 +436,8 @@ subjects:
   name: dev-user
   namespace: dev
 ```
-![alt text](image-8.png)
+<img width="980" height="394" alt="image" src="https://github.com/user-attachments/assets/04b27d3e-ed56-4090-9f7d-27f753955422" />
+
 
 ### Explanation
 
