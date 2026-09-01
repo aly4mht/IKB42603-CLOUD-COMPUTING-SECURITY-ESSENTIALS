@@ -1,7 +1,3 @@
-**Name:** ALYA LIYANA BINTI MAHAT (B01)  
-**Student ID:** 52215124600
-**IKB42603 Cloud Computing Security Essentials**
-
 # Identity and Access Control
 
 ## Session A — Cloud Identity and IAM
