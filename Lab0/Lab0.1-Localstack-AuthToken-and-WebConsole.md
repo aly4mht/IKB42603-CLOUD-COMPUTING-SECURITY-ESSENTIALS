@@ -1,7 +1,7 @@
-## Lab 0.1 — Environment Setup (Auth-Token Track)
+# Environment Setup (Auth-Token Track)
 ---
 
-# Lab Summary
+## Lab Summary
 
 The objective of this lab is to prepare and activate a LocalStack environment using an authentication token and verify that AWS CLI commands can communicate with the local AWS-compatible services.
 
