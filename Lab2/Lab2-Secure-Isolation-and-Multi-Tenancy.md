@@ -10,28 +10,6 @@ Security controls were then introduced to improve tenant isolation. ResourceQuot
 
 The lab also demonstrates data remanence in container storage by creating and deleting sensitive data in a Docker volume. An overwrite-before-delete technique was then used to demonstrate a more secure deletion approach. In real cloud environments, cryptographic erasure is generally preferred because customers do not directly control the underlying physical storage blocks.
 
-## Evidence Folder
-
-All screenshots used for this report are stored in the `Evidence` folder.
-
-| **Evidence File**           | **Purpose**                                                        |
-| --------------------------- | ------------------------------------------------------------------ |
-| `0-Create-Cluster.png`      | kind cluster `ccse-lab2` creation                                  |
-| `0.1-Install-calico.png`    | Calico installation and rollout status                             |
-| `1-Create-Tenant.png`       | Creation of `tenant-a` and `tenant-b` namespaces                   |
-| `1.2-Deploy-Web.png`        | Nginx deployments and services for both tenants                    |
-| `2-TenantB-IP.png`          | Tenant B service ClusterIP discovery                               |
-| `2.1-a-tenant-b.png`        | Before NetworkPolicy probe showing `tenant-a` can reach `tenant-b` |
-| `3-ResourceQuota.png`       | ResourceQuota YAML applied to `tenant-a`                           |
-| `3.1-Inspect-RQ.png`        | ResourceQuota inspection output                                    |
-| `4-deny-ingress.png`        | Default-deny ingress NetworkPolicy applied to `tenant-b`           |
-| `4.1-check-network.png`     | Network retest attempt after NetworkPolicy                         |
-| `5-secret.png`              | Per-tenant Secret creation                                         |
-| `5.1-scoped.png`            | ServiceAccount, Role and RoleBinding creation                      |
-| `5.2-Check-Rolebinding.png` | RBAC `can-i` authorization results                                 |
-| `6-create-del.png`          | Normal deletion and remanence scan                                 |
-| `6.1-Secure-wipe.png`       | Overwrite-before-delete secure wipe output                         |
-
 ## Setup: Cluster with Policy Enforcement
 
 The lab cluster was created using kind with the default CNI disabled. Calico was then installed so that Kubernetes NetworkPolicy rules could be enforced.
@@ -58,9 +36,8 @@ The `ccse-lab2` kind cluster was created with the default CNI disabled. Calico w
 
 ### Evidence
 
-[Create kind cluster](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/0-Create-Cluster.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/0-Create-Cluster.png))
-
-[Install Calico](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/0.1-Install-calico.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/0.1-Install-calico.png))
+<img width="781" height="529" alt="image" src="https://github.com/user-attachments/assets/5417d6c0-4f74-4707-a440-19b6bc5f3048" />
+<img width="975" height="560" alt="image" src="https://github.com/user-attachments/assets/26d4ddcd-8735-4899-a78b-aea503cc95ad" />
 
 ## Task 1: Two Tenants on One Cluster
 
@@ -91,10 +68,7 @@ Both tenants were successfully deployed on the same Kubernetes cluster. Kubernet
 The Nginx pods and services were created successfully in both `tenant-a` and `tenant-b`.
 
 ### Evidence
-
-[Create tenants](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/1-Create-Tenant.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/1-Create-Tenant.png))
-
-[Deploy tenant web services](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/1.2-Deploy-Web.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/1.2-Deploy-Web.png))
+<img width="910" height="657" alt="image" src="https://github.com/user-attachments/assets/7217e305-311f-4bf9-b661-e217be665803" />
 
 ## Task 2: Observe the Default-Open Risk
 
@@ -130,10 +104,7 @@ The `HTTP 200` response demonstrates that a pod in `tenant-a` was able to reach 
 This demonstrates the default-open network behaviour in Kubernetes. Namespace separation by itself does not automatically prevent network communication between tenants. In a multi-tenant cloud environment, this creates a security risk because a compromised workload belonging to one tenant could potentially communicate with or attack workloads belonging to another tenant.
 
 ### Evidence
-
-[Tenant B service IP](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/2-TenantB-IP.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/2-TenantB-IP.png))
-
-[Tenant A reaches Tenant B before NetworkPolicy](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/2.1-a-tenant-b.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/2.1-a-tenant-b.png))
+<img width="975" height="90" alt="image" src="https://github.com/user-attachments/assets/750e02d6-d79e-4976-a7c3-fb8dccef4ea3" />
 
 ## Task 3: Contain the Noisy Neighbour with ResourceQuota
 
@@ -177,10 +148,7 @@ The ResourceQuota limits `tenant-a` to a maximum of five pods, one CPU core of t
 This provides compute and resource isolation by preventing one tenant from consuming an excessive amount of shared cluster capacity. It helps reduce the risk of a noisy-neighbour situation affecting other workloads.
 
 ### Evidence
-
-[Apply ResourceQuota](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/3-ResourceQuota.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/3-ResourceQuota.png))
-
-[Inspect ResourceQuota](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/3.1-Inspect-RQ.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/3.1-Inspect-RQ.png))
+<img width="491" height="304" alt="image" src="https://github.com/user-attachments/assets/070e9706-259f-4efc-a740-acfe58c82abd" />
 
 ## Task 4: Default-Deny Network Isolation
 
@@ -215,8 +183,8 @@ Because the policy contains no ingress allow rules, incoming traffic to the sele
 This implements the **default-deny principle**, where traffic is blocked unless it is explicitly permitted.
 
 ### Evidence
+<img width="710" height="297" alt="image" src="https://github.com/user-attachments/assets/4531df73-7eed-4b90-a4d6-8197b368312e" />
 
-[Apply default-deny NetworkPolicy](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/4-deny-ingress.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/4-deny-ingress.png))
 
 ### Retest After NetworkPolicy
 
@@ -249,8 +217,7 @@ or a timeout/error from curl.
 A failed request after the policy is applied, together with the earlier `HTTP 200` result, provides the required before-and-after evidence of network isolation.
 
 ### Evidence
-
-[NetworkPolicy retest](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/4.1-check-network.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/4.1-check-network.png))
+<img width="975" height="100" alt="image" src="https://github.com/user-attachments/assets/4a557b36-c6a6-41c2-84d1-66c0ff0b6218" />
 
 > **Evidence note:** The existing `4.1-check-network.png` screenshot shows the ResourceQuota rejection rather than a network timeout. Therefore, it should not be presented as definitive proof that the NetworkPolicy blocked the traffic. A corrected probe with CPU and memory requests should be captured for the strongest final evidence.
 
@@ -316,12 +283,7 @@ The same ServiceAccount does not receive permission to read Secrets in `tenant-b
 The result shows that namespace separation combined with RBAC can prevent a tenant identity from accessing another tenant's secrets.
 
 ### Evidence
-
-[Create tenant secrets](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/5-secret.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/5-secret.png))
-
-[Create tenant-scoped RBAC](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/5.1-scoped.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/5.1-scoped.png))
-
-[Check RBAC authorization](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/5.2-Check-Rolebinding.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/5.2-Check-Rolebinding.png))
+<img width="975" height="604" alt="image" src="https://github.com/user-attachments/assets/d5c6224e-a085-4fae-a5c2-126d019543a5" />
 
 ### RBAC Note
 
@@ -353,10 +315,6 @@ The file was removed using `rm`, and no matching content was found in the remain
 
 However, normal deletion does not necessarily guarantee that the underlying storage blocks have been overwritten. Therefore, the absence of the string from the visible directory should not be interpreted as proof that all underlying storage copies or physical blocks have been securely destroyed.
 
-### Evidence
-
-[Normal delete and scan](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/6-create-del.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/6-create-del.png))
-
 ### Secure Wipe Demonstration
 
 The second command overwrites the file with zero bytes before deleting it:
@@ -386,10 +344,7 @@ The second command demonstrates an overwrite-before-delete technique. The conten
 In cloud environments, however, customers generally do not control the underlying physical storage blocks, replicas, snapshots or storage infrastructure. Therefore, **cryptographic erasure** is the more practical cloud solution. By destroying the encryption key, encrypted data that remains on underlying storage becomes computationally unusable.
 
 ### Evidence
-
-[Normal delete and scan](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/6-create-del.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/6-create-del.png))
-
-[Secure wipe output](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/blob/main/Lab2/Evidence/6.1-Secure-wipe.png) ([image](https://github.com/AdaniKamal/IKB42603-CLOUD-COMPUTING-SECURITY-ESSENTIALS/raw/main/Lab2/Evidence/6.1-Secure-wipe.png))
+<img width="975" height="267" alt="image" src="https://github.com/user-attachments/assets/6d57c9af-a091-4e45-b6f5-de0c60342fdb" />
 
 ## Verification Commands
 
