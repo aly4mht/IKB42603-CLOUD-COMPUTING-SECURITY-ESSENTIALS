@@ -374,6 +374,7 @@ requests.memory  Hard: 512Mi
 ```
 
 These commands provide final evidence that the network isolation policy and resource quota were configured in the cluster.
+<img width="332" height="143" alt="image" src="https://github.com/user-attachments/assets/4a774f0d-efda-4c05-b477-08bf8b86b2ba" />
 
 ## Short-Answer Questions
 
