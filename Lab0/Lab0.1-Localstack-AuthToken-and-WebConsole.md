@@ -1,13 +1,4 @@
-# IKB42603 Cloud Computing Security Essentials
-
 ## Lab 0.1 — Environment Setup (Auth-Token Track)
-
-**Name:** ALYA LIYANA BINTI MAHAT (B01)  
-**Student ID:** 52215124600  
-**Course:** IKB42603 Cloud Computing Security Essentials  
-**Lab:** Lab 0.1 — Environment Setup  
-**Topic:** LocalStack with Auth Token + Web Console
-
 ---
 
 # Lab Summary
