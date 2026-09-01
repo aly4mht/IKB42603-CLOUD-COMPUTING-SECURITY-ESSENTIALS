@@ -1,5 +1,3 @@
-# LAB 0 · SETUP CHEATSHEET
-
 # Lab Environment Setup
 
 Install & verify everything **ONCE before Lab 1** — Docker · AWS CLI · Kubernetes (kind) · helper tools.
