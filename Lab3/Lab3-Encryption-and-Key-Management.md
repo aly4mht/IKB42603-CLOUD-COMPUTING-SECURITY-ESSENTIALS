@@ -1,8 +1,11 @@
 # Lab 3: Data Protection — Encryption and Key Management
 
 **Course:** IKB42603 Cloud Computing Security Essentials
+
 **Lab:** Lab 3
+
 **Topic:** At-rest and in-transit encryption, envelope encryption, cryptographic erasure and data integrity
+
 **Environment:** OpenSSL, Docker, LocalStack KMS and AWS CLI v2
 
 ## Lab Summary
@@ -18,7 +21,7 @@ Finally, SHA-256 hashing and a simple hash chain are used to demonstrate integri
 The lab demonstrates that encryption algorithms alone are not sufficient to protect data. Secure key management, key separation, controlled key access and secure key deletion are essential parts of cloud data protection.
 
 ---
-
+## Session A — Encryption Fundamentals
 ## Task 1: Symmetric Encryption — Data at Rest
 
 A sensitive patient record was created:
@@ -65,6 +68,7 @@ The `MATCH: decryption successful` result confirms that the AES-encrypted data w
 Symmetric encryption uses one shared secret for both encryption and decryption. It is fast and suitable for protecting large amounts of data, but the shared key must be securely stored and distributed.
 
 ### Evidence
+<img width="873" height="619" alt="image" src="https://github.com/user-attachments/assets/0ff0fe10-3880-49a8-b614-ed5b3c18366e" />
 
 ---
 
@@ -142,6 +146,7 @@ For digital signatures:
 Digital signatures provide evidence of integrity and origin because modification of the signed data causes signature verification to fail.
 
 ### Evidence
+<img width="941" height="682" alt="image" src="https://github.com/user-attachments/assets/55ed4da5-fc1d-4ddf-b647-89bfce3def4f" />
 
 ---
 
@@ -185,9 +190,10 @@ The `-k` option allows `curl` to accept the self-signed certificate used in the 
 Without TLS, data transmitted using HTTP could potentially be read by an attacker monitoring the network. TLS encrypts the communication channel so intercepted traffic is not readable as plaintext.
 
 ### Evidence
+<img width="467" height="292" alt="image" src="https://github.com/user-attachments/assets/f30b599c-f612-4eae-ba9b-cba26efae5ca" />
 
 ---
-
+## Session B (Week 6) — Key Management, Envelope Encryption & Erasure
 # Task 4: KMS Master Key Management
 
 LocalStack was used to simulate AWS Key Management Service.
@@ -228,6 +234,7 @@ The KMS master key provides centralized management for encryption keys.
 The key is identified using its KeyId and is used to protect cryptographic operations without requiring the application to directly manage the underlying master key material.
 
 ### Evidence
+<img width="975" height="643" alt="image" src="https://github.com/user-attachments/assets/780a90af-3f76-4cfb-bdb9-b4ad061e715e" />
 
 ---
 
@@ -311,6 +318,10 @@ The data encryption key encrypts the large data locally, while the KMS master ke
 Only the KMS-wrapped data key needs to be stored after encryption.
 
 ### Evidence
+<img width="975" height="54" alt="image" src="https://github.com/user-attachments/assets/755a6b5b-15dc-44be-b027-58b844955628" />
+<img width="463" height="64" alt="image" src="https://github.com/user-attachments/assets/f401c2ad-e154-469a-b78d-cff8eec9995a" />
+<img width="975" height="71" alt="image" src="https://github.com/user-attachments/assets/d492ef8c-c153-4d3d-9250-56bff1f8fc1b" />
+<img width="444" height="66" alt="image" src="https://github.com/user-attachments/assets/7d0bcbeb-4ed0-480a-92b5-1c6978173220" />
 
 ---
 
@@ -375,6 +386,9 @@ Encrypted data is unrecoverable
 Per-tenant keys also improve isolation because one tenant's key material is separate from another tenant's key.
 
 ### Evidence
+<img width="975" height="407" alt="image" src="https://github.com/user-attachments/assets/a8bdf926-ff25-4f93-9762-02464f4765c2" />
+<img width="920" height="191" alt="image" src="https://github.com/user-attachments/assets/45693279-fa07-4f62-a77b-dda0e55ed936" />
+<img width="975" height="113" alt="image" src="https://github.com/user-attachments/assets/cdafabac-7a2e-413e-9421-bca8ef0354a8" />
 
 ---
 
@@ -447,6 +461,8 @@ If an earlier entry is modified, its hash changes. This causes the hashes of sub
 The hash chain does not prevent modification, but it makes unauthorised modification detectable.
 
 ### Evidence
+<img width="934" height="157" alt="image" src="https://github.com/user-attachments/assets/cef81ac6-0d22-4c57-927e-ab4021240f73" />
+<img width="975" height="486" alt="image" src="https://github.com/user-attachments/assets/6d25bd91-bc81-4065-a3c3-ff3ff90a76e8" />
 
 ---
 
@@ -476,6 +492,7 @@ Expected output:
 ```text
 Verified OK
 ```
+<img width="975" height="347" alt="image" src="https://github.com/user-attachments/assets/00a09c50-ea1e-45f0-98e8-b628fbd0ea0e" />
 
 ---
 
