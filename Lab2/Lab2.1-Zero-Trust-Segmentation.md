@@ -50,6 +50,7 @@ An attacker who has already compromised a pod is already inside the cluster peri
 
 ### Evidence
 
+<img width="975" height="68" alt="image" src="https://github.com/user-attachments/assets/b6a98cfa-1dfc-4829-8802-f9af0ac662aa" />
 
 ---
 
@@ -133,6 +134,7 @@ The `allow-dns-and-api-only` policy acts as an allow-list by permitting only the
 This implements the Zero Trust principle of explicitly authorizing network communication instead of trusting traffic simply because it originates from inside the cluster.
 
 ### Evidence
+<img width="795" height="1094" alt="image" src="https://github.com/user-attachments/assets/497ac310-cf16-4122-baa4-5440feaeeb43" />
 
 ---
 
@@ -158,6 +160,7 @@ The cross-tenant connection should now fail because the destination is not inclu
 This demonstrates micro-segmentation. Even if an attacker compromises a workload inside `tenant-a`, the workload cannot freely communicate with other tenants or unauthorized destinations.
 
 ### Evidence
+<img width="471" height="29" alt="image" src="https://github.com/user-attachments/assets/603874ca-cb2b-4840-a85d-0b504caaa923" />
 
 ---
 
@@ -177,6 +180,7 @@ The permitted in-namespace API service should remain reachable.
 This demonstrates that the policy is not a blanket block. Instead, it follows the principle of denying unnecessary communication while allowing explicitly authorized traffic.
 
 ### Evidence
+<img width="466" height="30" alt="image" src="https://github.com/user-attachments/assets/e47c28c7-4dd0-4ccd-9184-33b8b1a4b1db" />
 
 ---
 
@@ -197,9 +201,6 @@ DNS resolution requires communication with the Kubernetes DNS service using port
 When DNS traffic is blocked, hostname-based communication fails even if the destination service itself would otherwise be permitted.
 
 This demonstrates that security controls must be tested carefully before deployment to production. A deny-by-default policy must account for legitimate dependencies such as DNS.
-
-### Evidence
-
 
 ---
 
@@ -231,6 +232,7 @@ This means workloads that violate the required security restrictions can be reje
 
 ### Evidence
 
+<img width="975" height="163" alt="image" src="https://github.com/user-attachments/assets/de65994f-c50a-4995-a598-6f3f501c6e97" />
 
 ---
 
@@ -284,6 +286,7 @@ The admission controller can reject the workload because it violates restricted 
 This is a preventative security control because the insecure workload never runs.
 
 ### Evidence
+<img width="439" height="339" alt="image" src="https://github.com/user-attachments/assets/e914ff50-b6f5-47aa-8819-275898443156" />
 
 ---
 
@@ -338,6 +341,7 @@ The compliant pod should be successfully admitted and run inside the namespace.
 This proves that the Pod Security Standard is enforcing security requirements rather than blocking every workload. Secure workloads that satisfy the restricted requirements are allowed to run.
 
 ### Evidence
+<img width="659" height="664" alt="image" src="https://github.com/user-attachments/assets/e69a4a14-ba83-463f-adb0-c096c9e5832d" />
 
 ---
 
@@ -375,6 +379,7 @@ pod-security.kubernetes.io/enforce=restricted
 The pod output should show the compliant pod running.
 
 ### Evidence
+<img width="975" height="297" alt="image" src="https://github.com/user-attachments/assets/5cf87aa3-8fa9-40d1-b4bf-89593d3480ae" />
 
 ---
 
