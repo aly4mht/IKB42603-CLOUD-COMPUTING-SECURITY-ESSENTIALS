@@ -1,6 +1,4 @@
-# LAB 4 ADDENDUM · CORE TASK
-
-# Zero Trust: Service Identity with Mutual TLS
+# LAB 4.1 : Zero Trust: Service Identity with Mutual TLS
 
 *Every service authenticates every caller — binding authorisation to a certificate instead of an IP address*
 
@@ -55,6 +53,8 @@ openssl req -x509 -newkey rsa:2048 -nodes -keyout ca.key -out ca.crt -days 365 \
 
 openssl x509 -in ca.crt -noout -subject
 ```
+<img width="875" height="102" alt="image" src="https://github.com/user-attachments/assets/20fb1ded-32b0-4045-ab76-86a0a4102f6b" />
+<img width="975" height="153" alt="image" src="https://github.com/user-attachments/assets/5a9323e2-c8ef-4534-9044-a097f65ae906" />
 
 
 ## Step 2 — Issue an identity to each service
@@ -83,6 +83,8 @@ openssl x509 -in client.crt -noout -subject -issuer
 
 > **Note:** Note the -days 90 on the service certificates against -days 365 on the CA. Short-lived workload identities are deliberate: a stolen certificate expires on its own, which bounds the damage without anyone having to notice the theft. Production service meshes issue certificates lasting hours, not months. In your report, explain the trade-off that makes very short lifetimes practical for services but not for a human's credentials.
 
+<img width="975" height="324" alt="image" src="https://github.com/user-attachments/assets/6e182840-a140-45c1-b16d-760835ce7c34" />
+
 
 ## Step 3 — Require a client certificate
 
@@ -94,6 +96,8 @@ openssl s_server -accept 8443 -cert server.crt -key server.key \
 ```
 
 > **Note:** -tls1_2 is pinned deliberately. Under TLS 1.3 the client certificate is sent after the server has finished its own handshake, so authentication failures surface late and asymmetrically. Pinning TLS 1.2 makes the refusal in test 4b immediate and visible from the caller — which is what you want the first time you meet this.
+
+<img width="975" height="215" alt="image" src="https://github.com/user-attachments/assets/a10372f2-3ec4-4b60-85d4-90dc41ec8210" />
 
 
 # Step 4 — Three callers, three outcomes
@@ -129,6 +133,8 @@ echo | openssl s_client -connect localhost:8443 -tls1_2 \
 
 > **Caution:** Case 4c is the instructive one. The client sees a mostly normal-looking handshake, because Verify return code: 0 refers to the client's verification of the **server**, not the server's verification of the client. The rejection is visible only in the server's terminal. Client-side authentication failures surface asymmetrically, and an engineer who debugs only from the caller's side will wrongly conclude the connection succeeded. Capture the server terminal as your evidence.
 
+<img width="975" height="260" alt="image" src="https://github.com/user-attachments/assets/8fce3a10-7e70-4446-a948-d794d8e21f55" />
+
 
 # Step 5 — What the attacker must steal instead
 
@@ -143,6 +149,7 @@ nc -z -v localhost 8443
 
 ls -l client.key client.crt
 ```
+<img width="975" height="331" alt="image" src="https://github.com/user-attachments/assets/3bc5d44c-be1e-428d-9d15-23e055e46579" />
 
 
 In your Lab 4 report, answer precisely: an attacker has compromised a workload on the same segment and can reach the api service. State what they must now obtain to call it, and name one control that would limit the damage once they obtain it.
@@ -150,24 +157,6 @@ In your Lab 4 report, answer precisely: an attacker has compromised a workload o
 > =To successfully call the api service, the attacker must obtain a valid CA-signed private key and its corresponding certificate since under mutual TLS, network reachability alone grants zero access. For example, client.key and client.crt belonging to an authorized service like billing.internal.
 >
 > One control that would limit the damage once obtained is short-lived workload certificates such as certificates valid for hours or days with automated rotation. If an attacker manages to steal a private key, short expiration lifetimes automatically bound the window of opportunity for misuse, rendering the stolen key useless once it expires on its own without requiring manual revocation.
-
-# Deliverables — Add to Your Lab 4 Report
-
-## 1. Evidence (label each clearly)
-
-* The CA subject, and the client certificate's subject **and** issuer, showing it was signed by your CA (Steps 1–2).
-
-
-* Test 4a: the valid caller succeeding, with Verification: OK.
-
-
-* Test 4b: the anonymous caller refused, showing the handshake failure.
-
-
-* Test 4c: the **server-side** terminal log showing verify error:num=18 and CN = attacker.internal.
-
-
-* Step 5: the port still reachable, demonstrating that the network control and the identity control are independent.
 
 
 # 2. Short-Answer Questions
@@ -222,6 +211,8 @@ openssl verify -CAfile ~/ikb42603-mtls/ca.crt \
 ```
 
 The final two lines are the summary of the whole task: one certificate verifies against your CA and one does not, and that difference — not an address, not a network location — is what grants access.
+
+<img width="975" height="406" alt="image" src="https://github.com/user-attachments/assets/d79df388-254c-43d6-b046-2769ca05c4b3" />
 
 
 # Security Best-Practices Checklist
