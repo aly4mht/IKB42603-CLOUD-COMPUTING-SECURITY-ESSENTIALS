@@ -160,7 +160,7 @@ The cross-tenant connection should now fail because the destination is not inclu
 This demonstrates micro-segmentation. Even if an attacker compromises a workload inside `tenant-a`, the workload cannot freely communicate with other tenants or unauthorized destinations.
 
 ### Evidence
-<img width="471" height="29" alt="image" src="https://github.com/user-attachments/assets/603874ca-cb2b-4840-a85d-0b504caaa923" />
+<img width="975" height="68" alt="image" src="https://github.com/user-attachments/assets/603874ca-cb2b-4840-a85d-0b504caaa923" />
 
 ---
 
@@ -180,7 +180,7 @@ The permitted in-namespace API service should remain reachable.
 This demonstrates that the policy is not a blanket block. Instead, it follows the principle of denying unnecessary communication while allowing explicitly authorized traffic.
 
 ### Evidence
-<img width="466" height="30" alt="image" src="https://github.com/user-attachments/assets/e47c28c7-4dd0-4ccd-9184-33b8b1a4b1db" />
+<img width="975" height="68" alt="image" src="https://github.com/user-attachments/assets/e47c28c7-4dd0-4ccd-9184-33b8b1a4b1db" />
 
 ---
 
