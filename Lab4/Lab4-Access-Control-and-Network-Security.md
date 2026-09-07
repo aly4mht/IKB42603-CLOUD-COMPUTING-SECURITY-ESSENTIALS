@@ -1,8 +1,11 @@
 # Lab 4: Access Control & Network Security
 
 **Course:** IKB42603 Cloud Computing Security Essentials
+
 **Lab:** Lab 4
+
 **Topic:** Authentication, authorization, MFA, network segmentation and container hardening using Docker and Kubernetes
+
 **Environment:** Docker, kind Kubernetes cluster `ccse-lab4`, Docker networks `frontend-net` and `backend-net`
 
 ## Lab Summary
@@ -89,6 +92,7 @@ Authentication results should show:
 
 * `401` when no credentials are provided.
 * Successful access when valid credentials are provided.
+<img width="975" height="797" alt="image" src="https://github.com/user-attachments/assets/75e16223-5d98-4e9e-a265-5eba7696a614" />
 
 ---
 
@@ -136,6 +140,7 @@ The screenshot should show the generated or entered TOTP code being successfully
 ```text
 MFA OK
 ```
+<img width="975" height="148" alt="image" src="https://github.com/user-attachments/assets/db017f23-16a8-46fe-879a-394d7ac3285d" />
 
 ---
 
@@ -230,6 +235,7 @@ yes
 no
 no
 ```
+<img width="975" height="877" alt="image" src="https://github.com/user-attachments/assets/9e7ba23b-aee8-4c4f-adb1-6f7126ab7eb9" />
 
 ---
 
@@ -311,6 +317,7 @@ The screenshot should show:
 BLOCKED
 REACHABLE
 ```
+<img width="467" height="374" alt="image" src="https://github.com/user-attachments/assets/73fb4301-27a0-4085-8061-fb274d762953" />
 
 ---
 
@@ -352,6 +359,7 @@ The screenshot should show the firewall ruleset with:
 * Default `DROP` policy.
 * Explicit TCP port `443` allow rule.
 * Loopback interface allow rule.
+<img width="975" height="277" alt="image" src="https://github.com/user-attachments/assets/b155a2fd-9b32-45ce-90e5-06dd8211bd42" />
 
 ---
 
@@ -453,6 +461,7 @@ Evidence should include:
 * Docker inspection showing the non-root user.
 * Read-only filesystem enabled.
 * Trivy vulnerability scan output.
+<img width="975" height="532" alt="image" src="https://github.com/user-attachments/assets/ed8cfab6-db23-4061-b210-5fc31b50df55" />
 
 ---
 
@@ -477,6 +486,7 @@ Expected output should include:
 ```text
 ["ALL"]
 ```
+<img width="975" height="555" alt="image" src="https://github.com/user-attachments/assets/0918f07d-63b7-46ef-b318-cbe0a68fc113" />
 
 ---
 
