@@ -80,6 +80,7 @@ Verify the AWS identity:
 ```bash
 aws $EP sts get-caller-identity
 ```
+<img width="930" height="772" alt="5 11-Setup" src="https://github.com/user-attachments/assets/b57ff667-5c6d-40bb-ba58-f6270367fedf" />
 
 ---
 
@@ -135,6 +136,7 @@ BEFORE=$(docker logs localstack 2>&1 | wc -l)
 
 echo "baseline: $BEFORE lines"
 ```
+<img width="807" height="423" alt="5 12-Reconstruct the Management Plane Audit Trail" src="https://github.com/user-attachments/assets/7de1b3b6-b891-4693-8b8c-e48440d9a55f" />
 
 ---
 
@@ -165,6 +167,7 @@ Delete the temporary bucket:
 ```bash
 aws $EP s3api delete-bucket --bucket miit-throwaway
 ```
+<img width="906" height="606" alt="5 13-Reconstruct the Management Plane Audit Trail" src="https://github.com/user-attachments/assets/ee1262f7-f87c-4746-a752-45ed01ef11f4" />
 
 ---
 
@@ -202,6 +205,7 @@ instead of:
 ```
 
 Then repeat the activity and extraction steps.
+<img width="930" height="172" alt="5 14-Reconstruct the Management Plane Audit Trail" src="https://github.com/user-attachments/assets/dcbd5fca-ea7b-4342-8797-168d997e7d0a" />
 
 ---
 
@@ -272,6 +276,7 @@ mgmt-trail.log: FAILED
 ```
 
 This demonstrates that the alteration was detected.
+<img width="937" height="523" alt="5 15-Reconstruct the Management Plane Audit Trail" src="https://github.com/user-attachments/assets/4ca5c49d-2a70-4e40-875d-8be32dd08408" />
 
 ---
 
@@ -445,6 +450,9 @@ Expected result:
 ```text
 200
 ```
+<img width="956" height="638" alt="5 16-Backup, and Why Versioning Is Not One" src="https://github.com/user-attachments/assets/7574e0e8-3870-434c-9a3d-cbcd6abeb4d8" />
+<img width="975" height="551" alt="5 17-Backup, and Why Versioning Is Not One" src="https://github.com/user-attachments/assets/d6f3bbc8-b749-4333-aae0-c5fb86ea8f96" />
+<img width="931" height="654" alt="5 18-Backup, and Why Versioning Is Not One" src="https://github.com/user-attachments/assets/e6ff4db8-85b5-4980-b919-72fd103a5f22" />
 
 ---
 
@@ -540,6 +548,8 @@ Calculate the measured RTO:
 ```bash
 echo "MEASURED RTO (seconds): $((END - START))"
 ```
+<img width="975" height="671" alt="5 19- The Restore Drill" src="https://github.com/user-attachments/assets/73596452-0037-49dc-8855-46c1ef6dfcf0" />
+<img width="835" height="762" alt="5 19-The Restore Drill 2" src="https://github.com/user-attachments/assets/fb5a1ea8-485b-4d6a-b2f6-4204225a57bb" />
 
 ---
 
@@ -667,6 +677,8 @@ The second recovery path is restoring from the separate backup bucket:
 ```bash
 aws $EP s3 sync s3://miit-dr-backup s3://miit-primary
 ```
+
+<img width="975" height="300" alt="5 19 - Compare the Two Recovery Paths" src="https://github.com/user-attachments/assets/41a13f7b-f6d8-4490-a99f-e36fb20c6bf2" />
 
 ---
 
