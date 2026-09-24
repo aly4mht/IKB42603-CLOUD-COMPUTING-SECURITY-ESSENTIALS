@@ -64,6 +64,7 @@ aws $EP logs create-log-stream \
   --log-group-name /ccse/app \
   --log-stream-name auth
 ````
+<img width="684" height="301" alt="5 0-Setup Start Localstack" src="https://github.com/user-attachments/assets/6c2ad58e-e146-4d4e-bdcf-ba8734d76eb4" />
 
 ## Task 1 — Generate Application Logs
 
@@ -82,6 +83,7 @@ EOF
 
 cat auth.log
 ```
+<img width="975" height="420" alt="5 1-Generate Application Logs" src="https://github.com/user-attachments/assets/346932ee-45aa-4a43-8b60-20d6ae9a3a86" />
 
 ## Task 2 — Centralise Logs (Ship to CloudWatch)
 
@@ -109,6 +111,7 @@ aws $EP logs get-log-events \
   --query 'events[].message' \
   --output text
 ```
+<img width="975" height="224" alt="5 2-Centralise Logs" src="https://github.com/user-attachments/assets/48686fb2-d292-4424-8a54-254b7b45c29e" />
 
 ## Task 3 — Query for Security-Relevant Activity
 
@@ -133,6 +136,7 @@ alert: 4 failures from 203.0.113.9
 > **End of Session A:** Keep `auth.log` and the centralised read-back. Next week, these logs will be made tamper-proof and used to detect an incident.
 
 ---
+<img width="825" height="98" alt="5 3-Query for Security-Relevant Activity" src="https://github.com/user-attachments/assets/eeba287b-c29a-4822-a0c9-26c99acc648f" />
 
 # Session B — Week 10: Tamper-Proofing, Detection & Response
 
@@ -173,6 +177,7 @@ paste -d'|' \
 A different final hash proves that tampering was detected.
 
 > **Security tip:** Store the final hash, or forward the chain, to a separate append-only location so an attacker who owns the application cannot also rewrite its audit trail.
+<img width="934" height="720" alt="5 4-Tamper Proof Hash-Chained Logs" src="https://github.com/user-attachments/assets/1b7d35ed-ab1c-4785-ba9c-ca2bf2133c58" />
 
 ## Task 5 — Detect the Incident (Correlation)
 
@@ -205,6 +210,7 @@ fi
 ```
 
 This demonstrates the idea of a **SIEM**, which correlates events across sources into a single detection that an individual log entry may not reveal.
+<img width="975" height="442" alt="5 5-Detect The Incident" src="https://github.com/user-attachments/assets/c292ba29-8480-4f83-9301-9e7407b99572" />
 
 ## Task 6 — Incident Response
 
@@ -230,6 +236,7 @@ sha256sum evidence_*.log > evidence.sha256
 
 cat evidence.sha256
 ```
+<img width="936" height="262" alt="5 6-Incident Response" src="https://github.com/user-attachments/assets/1ca5fd05-5228-4289-85e2-827a0fcb82e6" />
 
 ---
 
@@ -337,6 +344,7 @@ Verify the evidence hash:
 ```bash
 sha256sum -c evidence.sha256
 ```
+<img width="975" height="326" alt="5 7-Verification Command" src="https://github.com/user-attachments/assets/e0d1a683-62ec-4da3-a804-2cf1d1c7c314" />
 
 ---
 
