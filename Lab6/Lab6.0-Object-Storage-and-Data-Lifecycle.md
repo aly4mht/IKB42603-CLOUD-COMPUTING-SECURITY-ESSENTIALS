@@ -1,6 +1,6 @@
 # IKB42603 Cloud Computing Security Essentials
 
-# LAB 6 · WEEKS 11–12
+# LAB 6 
 ## Object Storage Security & the Data Security Lifecycle
 
 > **Bucket exposure, resource policies, SSE-KMS, versioning and provable deletion — Amazon S3 on LocalStack**
@@ -85,6 +85,8 @@ aws $EP sts get-caller-identity
 A successful call returns the LocalStack dummy identity (account `000000000000`).
 
 Record that account number — you will need it in the ARNs you write in Task 4.
+<img width="975" height="281" alt="6 0- Object Storage   The Exposure Problem 2" src="https://github.com/user-attachments/assets/fcc69c10-3332-4894-99d7-b42b34343160" />
+<img width="975" height="195" alt="6 0- Object Storage   The Exposure Problem" src="https://github.com/user-attachments/assets/06fc1991-34df-436a-8fbb-1d09bf429f25" />
 
 ---
 
@@ -126,6 +128,8 @@ aws $EP s3api list-objects-v2 --bucket $BUCKET \
 aws $EP s3api get-object-tagging --bucket $BUCKET \
   --key confidential/record.txt
 ```
+<img width="975" height="986" alt="6 1- Task 1" src="https://github.com/user-attachments/assets/1b580f55-37a1-4deb-9d9e-edf373729d26" />
+<img width="685" height="515" alt="6 1-Task 1 ii " src="https://github.com/user-attachments/assets/c2901918-6434-4625-9bef-8439d727625a" />
 
 Complete this table in your report.
 
@@ -173,6 +177,7 @@ curl -s -o leaked.txt -w 'HTTP %{http_code}\n' \
 
 cat leaked.txt
 ```
+<img width="801" height="947" alt="6 2-Task 2" src="https://github.com/user-attachments/assets/c35f7900-17b0-43a7-8dd2-106ac87def3a" />
 
 > **Caution:** HTTP 200 and the patient record printed in your terminal is the whole breach. There was no exploit, no malware and no vulnerability — only a policy that said `Principal: *`.
 
@@ -258,6 +263,8 @@ aws $EP s3api get-bucket-policy \
   --query Policy \
   --output text
 ```
+<img width="975" height="699" alt="6 3-Task 3 ii" src="https://github.com/user-attachments/assets/70a5b664-360d-4e82-9550-f612b2d6a8a1" />
+<img width="975" height="518" alt="6 3-Task 3" src="https://github.com/user-attachments/assets/21975e29-495f-4693-af5b-531d50468ee2" />
 
 ---
 
@@ -390,6 +397,9 @@ AWS_PROFILE=analyst aws $EP s3api get-object \
   --key confidential/record.txt \
   analyst-conf.txt || echo "confidential: DENIED"
 ```
+<img width="935" height="998" alt="6 4-Task 4" src="https://github.com/user-attachments/assets/d8601bf6-c780-4de9-8fd9-8691056431c6" />
+<img width="941" height="989" alt="6 4-Task 4 ii" src="https://github.com/user-attachments/assets/ace44b1a-fb50-4ce5-aa9a-5a641d5ea033" />
+<img width="1096" height="118" alt="6 4-Task 4 iii" src="https://github.com/user-attachments/assets/023be55d-76da-4b13-b845-0a3801d322ba" />
 
 > **Verify or explain:** If LocalStack was not started with `ENFORCE_IAM=1`, both calls will succeed.
 >
@@ -487,6 +497,10 @@ The `head-object` output should report:
 * Your key ID
 
 This is evidence that a default control protected an object without the uploader doing anything.
+
+<img width="920" height="1025" alt="6 5-Task 5" src="https://github.com/user-attachments/assets/d9e6da97-e0f2-4a78-9f63-e9520654d0b2" />
+<img width="975" height="397" alt="6 5-Task 5 ii" src="https://github.com/user-attachments/assets/48f38ba9-676c-49f4-8341-db0918af4ce1" />
+
 
 > **Security tip:** `BucketKeyEnabled: true` is the envelope-encryption optimisation from Lab 3 applied at bucket scale: one data key is reused across many objects instead of one KMS call per object. Confidentiality is unchanged; cost and latency fall sharply.
 
@@ -589,6 +603,9 @@ aws $EP s3api list-objects-v2 --bucket $BUCKET
 ```bash
 aws $EP s3api delete-bucket-policy --bucket $BUCKET
 ```
+<img width="1600" height="381" alt="6 6-Task 6" src="https://github.com/user-attachments/assets/170ce8f7-8c79-443c-87ca-973dad7cdf3d" />
+<img width="867" height="298" alt="6 6-Task 6 ii" src="https://github.com/user-attachments/assets/89bcb223-379a-4e51-9d2a-0ef69b80892c" />
+<img width="658" height="748" alt="6 6-Task 6 iii" src="https://github.com/user-attachments/assets/e3694457-15b6-41be-bd11-04309e516f77" />
 
 > **Caution:** You have just locked yourself out of your own bucket, and the policy was correct.
 >
@@ -698,6 +715,10 @@ aws $EP s3api get-object \
 
 cat recovered.txt
 ```
+<img width="957" height="1103" alt="6 7-Task 7" src="https://github.com/user-attachments/assets/208e45ee-d84f-49fe-989b-98c923fe7e5a" />
+<img width="975" height="764" alt="6 7-Task 7 ii" src="https://github.com/user-attachments/assets/22f7ade7-ef3a-4452-b651-ca48f0d918d2" />
+<img width="975" height="386" alt="6 7-Task 7 iii" src="https://github.com/user-attachments/assets/e36c185b-4c69-4ea6-a472-523515f458e3" />
+
 
 > **Caution:** `recovered.txt` contains the original diagnosis — the data you redacted in v3 and then deleted.
 >
@@ -823,6 +844,9 @@ aws $EP s3api get-object \
   --key confidential/record-v2.txt \
   after-erasure.txt
 ```
+<img width="975" height="944" alt="6 8-Task 8" src="https://github.com/user-attachments/assets/61e5a8e3-8a46-453e-8c4b-6056986ed9bd" />
+<img width="975" height="707" alt="6 8-Task 8 ii" src="https://github.com/user-attachments/assets/63fb36f0-49a2-4d1a-9ca1-73832dcf338e" />
+
 
 > **Verify or explain:** LocalStack may still return the object because it does not always re-check key state on read.
 >
@@ -1002,6 +1026,7 @@ aws $EP kms describe-key \
   --query 'KeyMetadata.KeyState' \
   --output text
 ```
+<img width="975" height="539" alt="6 9-Verification Command" src="https://github.com/user-attachments/assets/9a154284-f79e-42ab-a7b6-b927d27d6924" />
 
 ---
 
